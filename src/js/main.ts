@@ -13,7 +13,6 @@ const constructUrl = () => {
   let url: string = `https://www.omdbapi.com/?apikey=5aede68a&s=${movieSearch}&page=${page}&type=movie`;
   if (year.length === 4) url += `&y=${year}`;
 
-  console.log(url);
   return url;
 };
 
@@ -33,7 +32,6 @@ const displayMovies = movies => {
       </div>
     </div>`;
   });
-  console.log(html);
   document.getElementById("list").innerHTML = html;
 };
 
@@ -49,8 +47,6 @@ const populatePages = (numOfMovies: number) => {
 };
 
 const getMovieData = () => {
-  console.log("get movies");
-
   fetch(constructUrl())
     .then(response => response.json())
     .then(data => {
@@ -83,8 +79,6 @@ $(document).ready(() => {
   $("#page").change(() => {
     getMovieData();
   });
-
-  console.log("startup");
 
   // $("button").on("click", event => {
   //   const id = event.target.id;

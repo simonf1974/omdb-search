@@ -16,14 +16,17 @@ const constructUrl = () => {
 
 const displayMovies = movies => {
   if (movies === undefined) return;
-  const ul = $("#list");
-  ul.empty();
+  let html: string = "";
   movies.forEach(movie => {
-    let li = document.createElement("li");
     const img = movie.Poster.includes("http") ? movie.Poster : "./assets/movie-placeholder.png";
-    li.innerHTML = `<p class="title">${movie.Title} (${movie.Year})<p><img src="${img}" alt="">`;
-    ul.append(li);
+    html += `<div class="col-sm"><div class="card"><div class="card-body">
+    <img src="${img}" class="card-img-top" alt="...">
+    <h5 class="card-title">${movie.Title}</h5>
+    <p class="card-text">(${movie.Year})</p>
+    </div></div></div>`;
   });
+  console.log(html);
+  document.getElementById("list").innerHTML = html;
 };
 
 const populatePages = (numOfMovies: number) => {
@@ -41,6 +44,7 @@ const getMovieData = () => {
   fetch(constructUrl())
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       populatePages(data.totalResults);
       displayMovies(data.Search);
     });

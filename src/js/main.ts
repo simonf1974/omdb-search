@@ -13,6 +13,7 @@ const constructUrl = () => {
   let url: string = `https://www.omdbapi.com/?apikey=5aede68a&s=${movieSearch}&page=${page}&type=movie`;
   if (year.length === 4) url += `&y=${year}`;
 
+  console.log(url);
   return url;
 };
 

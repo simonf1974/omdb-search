@@ -10,7 +10,7 @@ const constructUrl = () => {
   const page: string = $("#page")
     .val()
     .toString();
-  let url: string = `http://www.omdbapi.com/?apikey=5aede68a&s=${movieSearch}&page=${page}&type=movie`;
+  let url: string = `https://www.omdbapi.com/?apikey=5aede68a&s=${movieSearch}&page=${page}&type=movie`;
   if (year.length === 4) url += `&y=${year}`;
 
   return url;

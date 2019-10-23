@@ -1,3 +1,5 @@
+import { callExpression } from "@babel/types";
+
 const constructUrl = () => {
   const movieSearch: string = $("#movie")
     .val()
@@ -61,21 +63,28 @@ const initPages = () => {
   pagesCombo.val("1");
 };
 
-$("#movie").change(function() {
-  initPages();
-});
-
-$("#year").change(function() {
-  initPages();
-});
-
-$("#page").change(function() {
-  getMovieData();
-});
-
-$(document).ready(function() {
+$(document).ready(() => {
   $(document).on("submit", "#form", () => {
     getMovieData();
     return false;
   });
+
+  $("#movie").change(() => {
+    initPages();
+  });
+
+  $("#year").change(() => {
+    initPages();
+  });
+
+  $("#page").change(() => {
+    getMovieData();
+  });
+
+  // $("button").on("click", event => {
+  //   const id = event.target.id;
+  //   if (id === "mybutton") {
+  //     $("#exampleModal").modal("show");
+  //   }
+  // });
 });

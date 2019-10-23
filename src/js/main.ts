@@ -49,6 +49,8 @@ const populatePages = (numOfMovies: number) => {
 };
 
 const getMovieData = () => {
+  console.log("get movies");
+
   fetch(constructUrl())
     .then(response => response.json())
     .then(data => {

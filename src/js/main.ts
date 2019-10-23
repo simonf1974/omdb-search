@@ -19,11 +19,16 @@ const displayMovies = movies => {
   let html: string = "";
   movies.forEach(movie => {
     const img = movie.Poster.includes("http") ? movie.Poster : "./assets/movie-placeholder.png";
-    html += `<div class="col-sm"><div class="card"><div class="card-body">
-    <img src="${img}" class="card-img-top" alt="...">
-    <h5 class="card-title">${movie.Title}</h5>
-    <p class="card-text">(${movie.Year})</p>
-    </div></div></div>`;
+    html += `
+    <div class="col m-3">
+      <div class="card h-100">
+        <img src="${img}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${movie.Title}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${movie.Year} </h6>
+        </div>
+      </div>
+    </div>`;
   });
   console.log(html);
   document.getElementById("list").innerHTML = html;
@@ -44,7 +49,6 @@ const getMovieData = () => {
   fetch(constructUrl())
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       populatePages(data.totalResults);
       displayMovies(data.Search);
     });

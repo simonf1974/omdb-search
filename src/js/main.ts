@@ -82,6 +82,8 @@ $(document).ready(() => {
     getMovieData();
   });
 
+  console.log("startup");
+
   // $("button").on("click", event => {
   //   const id = event.target.id;
   //   if (id === "mybutton") {
